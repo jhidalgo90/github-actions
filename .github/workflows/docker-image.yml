@@ -11,4 +11,5 @@ jobs:
     - name : Checkout repo
     - uses: actions/checkout@v4
     - name: Build Docker image
-      run: docker build -t --tag image-name:$(date +%s) ./docker-images/
+      run: |
+        docker build -t --tag image-name:$(date +%s) ./docker-images/
