@@ -1,0 +1,13 @@
+name: Docker build and push
+
+on:
+  push:
+    branches: [ "main" ]
+    
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build Docker image
+      run: docker build ./docker-images/ --file Dockerfile --tag my-image-name:$(date +%s)
