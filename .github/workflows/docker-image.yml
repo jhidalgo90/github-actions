@@ -16,6 +16,5 @@ jobs:
       with:
         image: josh-image
         registry: ghcr.io
-        dockerfile: ./docker-images/
         username: ${{ secrets.GHCR_USERNAME }}
         password: ${{ secrets.GHCR_TOKEN }}
