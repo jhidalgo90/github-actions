@@ -10,12 +10,12 @@ jobs:
     steps:
     - name: Checkout repo & Build
       uses: actions/checkout@v2
-    - run: docker buildx build -t image-name:$(date +%s) ./docker-images/
     
-    - name: Push 
+    - name: Build & Push 
       uses: mr-smithers-excellent/docker-build-push@v6
       with:
-        image: image-name
+        image: josh-image
         registry: ghcr.io
+        dockerfile: ./docker-images/
         username: ${{ secrets.GHCR_USERNAME }}
         password: ${{ secrets.GHCR_TOKEN }}
