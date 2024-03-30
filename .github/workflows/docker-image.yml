@@ -13,8 +13,9 @@ jobs:
     
     - name: Build & Push 
       uses: mr-smithers-excellent/docker-build-push@v6
+      run: docker buildx build -t image-name:$(date +%s) ./docker-images/
       with:
-        image: josh-image
+        image: image-name
         registry: ghcr.io
         username: ${{ secrets.GHCR_USERNAME }}
         password: ${{ secrets.GHCR_TOKEN }}
