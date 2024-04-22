@@ -1,9 +1,19 @@
+##TODO: 
+
+- Ejecutarse cuando se cree una release no una rama
+
+- Separar el step de build y el de push en jobs ((((outputs))))
+
+- No puedo usar build and push de market
+
+##
+
+
 name: Create and publish a Docker image
 
 on:
-  create:
-    branches: 
-     - "release/**"
+  release:
+    - published
 
 env:
   REGISTRY: ghcr.io
