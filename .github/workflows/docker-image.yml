@@ -55,7 +55,7 @@ jobs:
         run: |
           cd docker-images
           ls -la
-          docker build -t .
+          docker build --builder -t test-image .
 #        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
 #        with:
 #          context: ./docker-images/
