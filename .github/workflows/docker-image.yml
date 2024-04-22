@@ -1,10 +1,10 @@
 ##TODO: 
 
-- Ejecutarse cuando se cree una release no una rama
+##- Ejecutarse cuando se cree una release no una rama
 
-- Separar el step de build y el de push en jobs ((((outputs))))
+##- Separar el step de build y el de push en jobs ((((outputs))))
 
-- No puedo usar build and push de market
+##- No puedo usar build and push de market
 
 ##
 
