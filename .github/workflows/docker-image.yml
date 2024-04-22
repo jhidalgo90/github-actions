@@ -53,10 +53,9 @@ jobs:
           DOCKER_REGISTRY: ${{ steps.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          ls -la
           cd docker-images
           ls -la
-          docker build -t $DOCKER_REGISTRY/:$IMAGE_TAG .
+          docker build -t .
 #        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
 #        with:
 #          context: ./docker-images/
