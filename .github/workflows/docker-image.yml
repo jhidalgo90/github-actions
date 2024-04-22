@@ -52,10 +52,11 @@ jobs:
         env:
           DOCKER_REGISTRY: ${{ steps.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
+          BUILDX_CONFIG: ~/.docker/buildx
         run: |
           cd docker-images
           ls -la
-          docker build --builder -t test-image .
+          docker build -t test-image .
 #        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
 #        with:
 #          context: ./docker-images/
