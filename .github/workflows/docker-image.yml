@@ -26,10 +26,10 @@ jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
-    permissions:
-      contents: read-all
-      packages: write-all
-      id-token: write-all
+    permissions: write
+#      contents: read-all
+#      packages: write-all
+ #     id-token: write-all
 
     steps:
       - name: Checkout repository
