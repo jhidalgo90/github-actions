@@ -48,7 +48,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       - name: Build Docker image
-        run: docker build -t test-image .
+        run: docker build -t /home/runner/work/_temp/* test-image .
 #        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
 #        with:
 #          context: ./docker-images/
@@ -58,7 +58,7 @@ jobs:
 
 
       - name: Push Docker image
-        run: docker push test-image
+        run: docker push /home/runner/work/_temp/* test-image
 #        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
 #        with:
 #          context: ./docker-images/
