@@ -21,7 +21,6 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build-and-push-image:
@@ -44,14 +43,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
-
       - name: Build Docker image
         id: build-image
         env:
@@ -69,11 +60,19 @@ jobs:
 #          tags: ${{ steps.meta.outputs.tags }}
 #          labels: ${{ steps.meta.outputs.labels }}
 
+      - name: Tag an image
+        id: build-tag
+        env:
+          DOCKER_REGISTRY: ${{ steps.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+          BUILDX_CONFIG: ~/.docker/buildx
+        run: |
+          docker image tag test-image ghcr.io/${{ github.actor }}/test-image
 
       - name: Push Docker image
         id: push-image
         env:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: docker push ghcr.io/${{ github.actor }}/test-image
 #        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
 #        with:
